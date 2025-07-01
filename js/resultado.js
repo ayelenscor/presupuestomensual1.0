@@ -10,5 +10,20 @@ gastos.map(nombre => {
     mostrarResultadoDiv.appendChild(detalleGastos)
   });
 
+function sumarGastos(gastos) {
+  let total = 0
+  Object.values(gastos).forEach(valor => {
+    total += Number(valor)
+  })
+  return total
+}
 
+let salario = localStorage.getItem('salario')
+salario = JSON.parse(salario)
 
+  const totalGastos = sumarGastos(presupuesto.gastos)
+  const saldoAFavor = salario - totalGastos
+
+const saldoAFavorDiv = document.createElement("div")
+saldoAFavorDiv.innerHTML = `Saldo a favor: $${saldoAFavor}`
+mostrarResultadoDiv.appendChild(saldoAFavorDiv)

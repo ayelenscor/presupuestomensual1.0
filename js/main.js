@@ -17,15 +17,15 @@ document.getElementById("calcularLink").addEventListener("click", () => {
   let servicios = document.getElementById("servicios").value
 
   let presupuesto = {
-    salario: salario,
+    salario: Number(salario),
     gastos: {
-      alquiler: alquiler,
-      comida: comida,
-      servicios: servicios
+      alquiler: Number(alquiler),
+      comida: Number(comida),
+      servicios: Number(servicios)
     }
   }
 
-  localStorage.setItem("presupuesto", JSON.stringify(presupuesto))
+  localStorage.setItem('presupuesto', JSON.stringify(presupuesto))
 })
 
 
