@@ -57,7 +57,7 @@ calcularBtn.addEventListener("click", (e) => {
       alquiler,
       comida,
       servicios,
-      presupuesto
+      presupuesto,
     };
 
     localStorage.setItem('Presupuesto', JSON.stringify(datos));
