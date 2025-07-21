@@ -7,19 +7,17 @@
   <script defer src="./js/main.js"></script>
   <title>Simulador de Presupuesto</title>
   <!-- CSS -->
-  <link rel="stylesheet" href="./styles.css/style.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
 </head>
 <body>
   <h1> 🖩 Simulador de Presupuesto</h1>
 
-<section class="inputs">
-  <input type="text" id="Salario" placeholder="Ingrese su Salario mensual" />
-  <input type="text" id="Alquiler" placeholder="Ingrese su Gasto en Alquiler" />
-  <input type="text" id="Comida" placeholder="Ingrese su Gasto en Comida" />
-  <input type="text" id="Servicios" placeholder="Ingrese su Gasto en Servicios" />
+<section id="inputs-container">
 </section>
 
-     <div><a href="./pages/resultado.html"><button id="CalcularBtn">Calcular</button></a></div>
+     <h2><a href="./pages/resultado.html" id="CalcularBtn">Calcular</a></h2>
+
+     <p id="mensajeError"></p>
 
 </body>
 </html>

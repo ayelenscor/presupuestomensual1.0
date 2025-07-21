@@ -1,4 +1,4 @@
-let inputs = [
+const inputs = [
   {
     id: 1,
     nombre: "Salario",
@@ -17,34 +17,51 @@ let inputs = [
   }
 ]
 
-let inputsGuardados = document.getElementById("contenidos")
+let inputsContainer = document.getElementById("inputs-container")
+let inputshtml = []
 
-inputs.forEach(input => {
-  let container = document.createElement("div")
-  container.className = "input"
-  container.innerHTML = `<label>${input.nombre}:
-                         <input type="text" id="${input.nombre}">
-                         </label>`
-  contenidos.appendChild(container)
-});
+function agregarI (IArray) {
+  IArray.forEach(input => {
+    const container = document.createElement("div")
+    container.innerHTML = `<h3>${input.nombre}:</h3>
+                          <p><input type="number" class="input-gasto" id="${input.nombre}" placeholder="Ingrese ${input.nombre}" /></p>`
+    inputsContainer.appendChild(container)
+  });
+}
 
-document.getElementById("calcularLink").addEventListener("click", () => {
-  let salario = document.getElementById("salario").value
-  let alquiler = document.getElementById("alquiler").value
-  let comida = document.getElementById("comida").value
-  let servicios = document.getElementById("servicios").value
+agregarI(inputs);
 
-  let presupuesto = {
-    salario: Number(salario),
-    gastos: {
-      alquiler: Number(alquiler),
-      comida: Number(comida),
-      servicios: Number(servicios)
-    }
+let calcularBtn = document.getElementById("CalcularBtn");
+let mensajeError = document.getElementById("mensajeError"); 
+
+calcularBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  let salario = Number(document.getElementById("Salario").value);
+  let alquiler = Number(document.getElementById("Alquiler").value);
+  let comida = Number(document.getElementById("Comida").value);
+  let servicios = Number(document.getElementById("Servicios").value);
+
+  if (
+    isNaN(salario) || isNaN(alquiler) || isNaN(comida) || isNaN(servicios) ||
+    salario <= 0 || alquiler < 0 || comida < 0 || servicios < 0
+  ) {
+    mensajeError.innerHTML = "⚠️ Ingrese un valor válido en todos los campos";
+  } else {
+    let presupuesto = salario - (alquiler + comida + servicios);
+    mensajeError.innerHTML = ""; 
+
+    window.location.href = "./pages/resultado.html";
+
+    const datos = {
+      salario,
+      alquiler,
+      comida,
+      servicios,
+      presupuesto
+    };
+
+    localStorage.setItem('Presupuesto', JSON.stringify(datos));
+
   }
-
-  localStorage.setItem('presupuesto', JSON.stringify(presupuesto))
-})
-
-
+});
 

@@ -17,23 +17,24 @@ h1 {
   text-align: center;
 }
 
-.inputs {
+h3 { 
+  color: #3a6f4d; 
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  
+}
+.input-gasto {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 250px;
   gap: 15px;
   padding: 10px;
   border: 1px solid #a9d6b3;
   border-radius: 4px;
   background-color: #f6fff9;
   margin-top: 20px;
-}
-
-.inputs input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  text-align: center;
 }
 
 #CalcularBtn , #VolverBtn {
@@ -63,6 +64,7 @@ a {
 
 #detalleGastos ul {
   list-style-type: none;
+  font-size:medium;
   padding-left: 20px;
   margin: 0;
 }
@@ -71,7 +73,9 @@ p, #mostrarResultado {
   margin-top: 15px;
   font-weight: bold;
   color: #2d4739;
+  font-size: larger;
 }
+
 
 a, #calcularbtn {
   display: block;

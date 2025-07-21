@@ -1,29 +1,29 @@
-let presupuesto = localStorage.getItem('presupuesto')
-presupuesto = JSON.parse(presupuesto)
+const datosGuardados = localStorage.getItem("Presupuesto");
+const datos = JSON.parse(datosGuardados);
 
-const gastos = ["alquiler", "comida", "servicios"]
-const mostrarResultadoDiv = document.getElementById("mostrarResultado")
+const gastosArray = [
+  { nombre: "Alquiler", valor: datos.alquiler },
+  { nombre: "Comida", valor: datos.comida },
+  { nombre: "Servicios", valor: datos.servicios }
+];
 
-gastos.map(nombre => {
-    const detalleGastos = document.createElement("div")
-    detalleGastos.innerHTML= `${nombre}: $${presupuesto.gastos[nombre]}`
-    mostrarResultadoDiv.appendChild(detalleGastos)
-  });
+const gastosStrings = gastosArray.map(gasto => 
+  `${gasto.nombre}: $${gasto.valor}`);
 
-function sumarGastos(gastos) {
-  let total = 0
-  Object.values(gastos).forEach(valor => {
-    total += Number(valor)
-  })
-  return total
-}
 
-let salario = localStorage.getItem('salario')
-salario = JSON.parse(salario)
+localStorage.setItem('gastosStrings', JSON.stringify(gastosStrings));
 
-  const totalGastos = sumarGastos(presupuesto.gastos)
-  const saldoAFavor = salario - totalGastos
 
-const saldoAFavorDiv = document.createElement("div")
-saldoAFavorDiv.innerHTML = `Saldo a favor: $${saldoAFavor}`
-mostrarResultadoDiv.appendChild(saldoAFavorDiv)
+let detalleGastos = document.getElementById("detalleGastos");
+detalleGastos.innerHTML =
+     `<h3>📝 Detalle de gastos</h3>
+      <ul>
+        <li>Salario mensual: $${datos.salario}</li>
+        <li>Gasto en alquiler: $${datos.alquiler}</li>
+        <li>Gasto en comida: $${datos.comida}</li>
+        <li>Gasto en servicios: $${datos.servicios}</li>
+      </ul>`;
+
+let mostrarResultado = document.getElementById("mostrarResultado");
+mostrarResultado.textContent = `💰 Tu presupuesto es: $${datos.presupuesto}`;
+
