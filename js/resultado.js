@@ -17,7 +17,7 @@ let volverBtn = document.getElementById("VolverBtn");
 volverBtn.addEventListener("click", () => {
   if (!datosGuardados) return;
 
-  let salario = datosGuardados.salario
+  let salario = datosGuardados.salario;
   let alquiler = datosGuardados.alquiler;
   let comida = datosGuardados.comida;
   let servicios = datosGuardados.servicios;
@@ -26,8 +26,7 @@ volverBtn.addEventListener("click", () => {
   const totalGastos = gastos.reduce((acc, gasto) => acc + gasto, 0);
   const nuevoPresupuesto = salario - totalGastos;
 
-  localStorage.setItem('Presupuesto', JSON.stringify({presupuesto: nuevoPresupuesto}));
+  localStorage.setItem("PresupuestoActual", JSON.stringify(nuevoPresupuesto));
 
-  window.location.href = "../index.html";
 });
 
