@@ -1,12 +1,15 @@
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-family: Arial, sans-serif;
   background-color: #e6f4ea; 
   color: #2d4739; 
   padding: 20px;
-  max-width: 600px;
-  margin: auto;
+  max-width: 500px;
+  margin: 0 auto; 
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 80, 0, 0.1);
 }
 
 h1 {
@@ -14,50 +17,63 @@ h1 {
   text-align: center;
 }
 
-label {
-  font-weight: bold;
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 15px;
+  padding: 10px;
   border: 1px solid #a9d6b3;
   border-radius: 4px;
   background-color: #f6fff9;
-  box-sizing: border-box;
+  margin-top: 20px;
 }
 
-#calcularLink, #calcularbtn, a {
-  display: block;
-  text-decoration: none;
-  margin-top: 20px;
+.inputs input {
   padding: 10px;
-  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#CalcularBtn , #VolverBtn {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 20px;
   background-color: #4CAF50;
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  text-align: center;}
-
-#calcularLink:hover {
-  background-color: #45a049;
+  font-size: large;
+  margin-top: 20px;
+  text-align: center;
 }
 
-.parent { 
-  text-align: center;}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+#detalleGastos {
+  text-align: center;
+  padding: 20px;
+  background-color: #c6ebd2;
+  border: 5px solid #81bd83;
+  border-radius: 5px;
+  width: 500px;
+}
 
-#resultado {
-  margin-top: 20px;
-  font-size: 18px;
+#detalleGastos ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+p, #mostrarResultado {
+  margin-top: 15px;
   font-weight: bold;
   color: #2d4739;
-  background-color: #d7f5dc;
-  padding: 10px;
-  border-left: 5px solid #4CAF50;
-  border-radius: 4px;
+}
+
+a, #calcularbtn {
+  display: block;
+  text-align: center;
 }

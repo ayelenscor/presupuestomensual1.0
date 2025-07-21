@@ -1,11 +1,29 @@
-let campos = ["salario", "alquiler", "comida", "servicios"]
-let contenidos = document.getElementById("contenidos")
+let inputs = [
+  {
+    id: 1,
+    nombre: "Salario",
+  },
+  {
+    id: 2,
+    nombre: "Alquiler",
+  },
+  {
+    id: 3,
+    nombre: "Comida",
+  },
+  {
+    id: 4,
+    nombre: "Servicios",
+  }
+]
 
-campos.forEach(nombre => {
+let inputsGuardados = document.getElementById("contenidos")
+
+inputs.forEach(input => {
   let container = document.createElement("div")
   container.className = "input"
-  container.innerHTML = `<label>${nombre}:
-                         <input type="text" id="${nombre}">
+  container.innerHTML = `<label>${input.nombre}:
+                         <input type="text" id="${input.nombre}">
                          </label>`
   contenidos.appendChild(container)
 });
