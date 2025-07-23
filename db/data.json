@@ -1,0 +1,21 @@
+[
+{ 
+    "id": 1,
+    "nombre": "Salario" 
+  },
+
+  { 
+    "id": 2, 
+    "nombre": "Alquiler" 
+  },
+
+  { 
+    "id": 3, 
+    "nombre": "Comida" 
+  },
+
+  { 
+    "id": 4, 
+    "nombre": "Servicios" 
+}
+]
