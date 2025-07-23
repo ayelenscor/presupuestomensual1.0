@@ -1,14 +1,41 @@
 const datosGuardados = JSON.parse(localStorage.getItem("Presupuesto"));
 
-let detalleGastos = document.getElementById("detalleGastos");
-detalleGastos.innerHTML =
-  `<h3>📝 Detalle de gastos</h3>
-   <ul>
-     <li>Salario mensual: $${datosGuardados.salario}</li>
-     <li>Gasto en alquiler: $${datosGuardados.alquiler}</li>
-     <li>Gasto en comida: $${datosGuardados.comida}</li>
-     <li>Gasto en servicios: $${datosGuardados.servicios}</li>
-   </ul>`;
+document.addEventListener("DOMContentLoaded", () => {
+  let detalleGastos = document.getElementById("detalleGastos");
+
+  detalleGastos.innerHTML = `
+    <h3>📝 Detalle de gastos</h3>
+    <div id="mensajePresupuesto" style="margin-top:10px; font-weight:bold;"></div>
+    <ul>
+      <li>Salario mensual: $${datosGuardados.salario}</li>
+      <li>Gasto en alquiler: $${datosGuardados.alquiler}</li>
+      <li>Gasto en comida: $${datosGuardados.comida}</li>
+      <li>Gasto en servicios: $${datosGuardados.servicios}</li>
+    </ul>
+  `;
+
+  const salario = datosGuardados.salario;
+  const alquiler = datosGuardados.alquiler;
+  const comida = datosGuardados.comida;
+  const servicios = datosGuardados.servicios;
+
+  const presupuestoReal = salario - (alquiler + comida + servicios);
+  let mensaje = "";
+
+try {
+    if (presupuestoReal >= 0) {
+      mensaje = "¡Bien! Te manejaste bien este mes.";
+    } else {
+      throw new Error("¡Tené cuidado, te excediste, pero puede pasar!");
+    }
+  } catch (err) {
+    mensaje = err.message
+  } finally {
+    let mensajeDiv = document.getElementById("mensajePresupuesto");
+    mensajeDiv.textContent = mensaje;
+  }
+});
+
 
 let mostrarResultado = document.getElementById("mostrarResultado");
 mostrarResultado.textContent = `💰 Tu presupuesto es: $${datosGuardados.presupuesto}`;
@@ -17,24 +44,6 @@ let salario = datosGuardados.salario;
 let alquiler = datosGuardados.alquiler;
 let comida = datosGuardados.comida;
 let servicios = datosGuardados.servicios;
-
-let respuesta = prompt("¿El presupuesto restante es mayor al salario? (si / no)");
-let mensaje = "";
-const presupuestoReal = salario - (alquiler + comida + servicios);
-
-try {
-  if (respuesta === "no" && presupuestoReal < salario) {
-    mensaje = "¡Bien! Te manejaste bien este mes.";
-  } else if (respuesta === "si" && presupuestoReal > salario) {
-  } else {
-    throw new Error("¡Tené cuidado, te excediste, pero puede pasar!");
-  }
-} catch (err) {
-  mensaje = err
-} finally {
-  console.log("📊 Conclusión del presupuesto:", mensaje);
-}
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
